@@ -30,7 +30,7 @@ public class demoController {
     }
     
     @RequestMapping("/demoDBTest")
-    public @ResponseBody DemoBean demoDBTest(){
+    public @ResponseBody  DemoBean demoDBTest(){
         return demoService.selectDemoBeanById(1);
     }
     
