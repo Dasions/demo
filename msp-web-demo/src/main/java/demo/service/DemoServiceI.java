@@ -2,10 +2,14 @@ package demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import demo.bean.DemoBean;
 import demo.dao.DemoDao;
 
+
 @Service 
+@Transactional
 public class DemoServiceI implements DemoService{
 	@Autowired 
 	DemoDao demoDao;
@@ -24,6 +28,11 @@ public class DemoServiceI implements DemoService{
 	public void delDemoBean(DemoBean demoBean) {
 		// TODO Auto-generated method stub
 		demoDao.delDemoBean(demoBean);
+	}
+	public void insertTransaction(DemoBean demoBean) {
+		// TODO Auto-generated method stub
+		demoDao.insertDemoBean(demoBean);
+		throw new RuntimeException();
 	}
 
 }

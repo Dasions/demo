@@ -7,4 +7,5 @@ public interface DemoService {
 	public void insertDemoBean(DemoBean demoBean);
 	public void updateDemoBean(DemoBean demoBean);
 	public void delDemoBean(DemoBean demoBean);
+	public void insertTransaction(DemoBean demoBean);
 }

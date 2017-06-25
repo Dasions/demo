@@ -60,4 +60,14 @@ public class demoController {
         demoService.delDemoBean(demoBean);
         return "demoTest";
     }
+    
+    @RequestMapping("/transactionTest")
+    public String transactionTest(){
+    	DemoBean demoBean=new DemoBean();
+    	demoBean.setId((new Random()).nextInt(1000));
+    	demoBean.setValue((new Random()).nextInt(1000)+"transactionTestTest");
+        demoService.insertTransaction(demoBean);
+        return "demoTest";
+    }
+    
 }
