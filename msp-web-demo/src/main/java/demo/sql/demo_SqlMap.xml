@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="demo.dao.DemoDao">  
+    <resultMap id="BaseResultMap" type="demo.bean.DemoBean">  
+        <id column="id" property="id" jdbcType="INTEGER" />  
+        <result column="name" property="value" jdbcType="CHAR" />  
+    </resultMap>  
+    <select id="selectDemoBeanById" parameterType="int" resultMap="BaseResultMap">  
+        SELECT * FROM t_demo WHERE id = #{id}  
+    </select>  
+    
+    <insert id="insertDemoBean" parameterType="demo.bean.DemoBean"> 
+        insert into t_demo(id,name)  
+             values(#{id},#{value})  
+    </insert>
+    
+    <update id="updateDemoBean" parameterType="demo.bean.DemoBean" >
+        update t_demo set name=#{value} where id=#{id}
+    </update>
+    
+    <delete id="delDemoBean" parameterType="int">
+        delete from t_demo where id=#{id}
+    </delete>
+</mapper>  
