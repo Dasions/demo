@@ -22,4 +22,8 @@
     <delete id="delDemoBean" parameterType="int">
         delete from t_demo where id=#{id}
     </delete>
+    
+    <select id="selectDemoBeans"  resultMap="BaseResultMap">  
+        SELECT * FROM t_demo  
+    </select> 
 </mapper>  

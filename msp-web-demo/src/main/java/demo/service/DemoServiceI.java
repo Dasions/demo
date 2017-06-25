@@ -1,8 +1,12 @@
 package demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.github.pagehelper.PageHelper;
 
 import demo.bean.DemoBean;
 import demo.dao.DemoDao;
@@ -33,6 +37,10 @@ public class DemoServiceI implements DemoService{
 		// TODO Auto-generated method stub
 		demoDao.insertDemoBean(demoBean);
 		throw new RuntimeException();
+	}
+	public List<DemoBean> selectDemoBeans() {
+		// TODO Auto-generated method stub
+		return demoDao.selectDemoBeans();
 	}
 
 }

@@ -136,6 +136,14 @@
             <version>4.3.7.RELEASE</version>
         </dependency>
  <!-- mybatis -->
+ <!-- mybatis分页插件 -->
+ <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper</artifactId>
+    <version>5.0.0</version>
+</dependency>
+ <!-- mybatis分页插件 -->
   </dependencies>
   <build>
     <finalName>msp-web-demo</finalName>

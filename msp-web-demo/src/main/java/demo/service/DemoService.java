@@ -1,5 +1,7 @@
 package demo.service;
 
+import java.util.List;
+
 import demo.bean.DemoBean;
 
 public interface DemoService {
@@ -8,4 +10,5 @@ public interface DemoService {
 	public void updateDemoBean(DemoBean demoBean);
 	public void delDemoBean(DemoBean demoBean);
 	public void insertTransaction(DemoBean demoBean);
+	public List<DemoBean> selectDemoBeans();
 }
