@@ -144,6 +144,14 @@
     <version>5.0.0</version>
 </dependency>
  <!-- mybatis分页插件 -->
+ 
+ <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+ 
   </dependencies>
   <build>
     <finalName>msp-web-demo</finalName>
