@@ -11,9 +11,9 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="demo.controller"/>
-    <context:component-scan base-package="demo.service"/>
-    
+    <context:component-scan base-package="**.controller"/>
+    <context:component-scan base-package="**.service"/>
+
     <mvc:default-servlet-handler />
 
     <mvc:annotation-driven />
@@ -95,4 +95,7 @@
 			<bean class="commons.interceptors.AllRequestInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+
+      <!-- 引入redis属性配置文件 -->
+      <import resource="classpath:redis-context.xml"/>
 </beans>
