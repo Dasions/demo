@@ -27,7 +27,7 @@ public class demoController {
     @RequestMapping("/demoReturnJsonTest")
     public @ResponseBody DemoBean demoReturnJsonTest(){
     	DemoBean demoBean=new DemoBean();
-    	demoBean.setId(3);
+    	demoBean.setId("3");
     	demoBean.setValue("ReturnJsonTest");
         return demoBean;
     }
@@ -40,7 +40,7 @@ public class demoController {
     @RequestMapping("/insertDemoBeanTest")
     public String insertDemoBeanTest(){
     	DemoBean demoBean=new DemoBean();
-    	demoBean.setId((new Random()).nextInt(1000));
+    	//demoBean.setId(""+(new Random()).nextInt(10000)+(new Random()).nextInt(10000));
     	demoBean.setValue((new Random()).nextInt(1000)+"insertDemoBeanTest");
         demoService.insertDemoBean(demoBean);
         return "demoTest";
@@ -49,7 +49,7 @@ public class demoController {
     @RequestMapping("/updateDemoBeanTest")
     public String updateDemoBeanTest(){
     	DemoBean demoBean=new DemoBean();
-    	demoBean.setId(1);
+    	demoBean.setId("1");
     	demoBean.setValue((new Random()).nextInt(1000)+"updateDemoBeanTest");
         demoService.updateDemoBean(demoBean);
         return "demoTest";
@@ -58,7 +58,7 @@ public class demoController {
     @RequestMapping("/delDemoBeanTest")
     public String delDemoBeanTest(){
     	DemoBean demoBean=new DemoBean();
-    	demoBean.setId(1);
+    	demoBean.setId("1");
         demoService.delDemoBean(demoBean);
         return "demoTest";
     }
@@ -66,7 +66,7 @@ public class demoController {
     @RequestMapping("/transactionTest")
     public String transactionTest(){
     	DemoBean demoBean=new DemoBean();
-    	demoBean.setId((new Random()).nextInt(1000));
+    	demoBean.setId(""+(new Random()).nextInt(1000));
     	demoBean.setValue((new Random()).nextInt(1000)+"transactionTestTest");
         demoService.insertTransaction(demoBean);
         return "demoTest";

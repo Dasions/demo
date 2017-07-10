@@ -11,6 +11,10 @@
     </select>  
     
     <insert id="insertDemoBean" parameterType="demo.bean.DemoBean"> 
+     <selectKey keyProperty="id" resultType="String" order="BEFORE">  
+        select  replace(uuid(),'-','')   from dual  
+     </selectKey>  
+       
         insert into t_demo(id,name)  
              values(#{id},#{value})  
     </insert>

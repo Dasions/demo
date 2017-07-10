@@ -14,15 +14,17 @@ public class RedisDemoController {
 	@Autowired 
 	RedisDemoService redisDemoService;
 	
+	//存储对象到redis
 	 @RequestMapping("/redisDemoAdd")
 	    public String redisDemoAdd(){
 		 RedisDemoBean bean=new RedisDemoBean();
 		 bean.setId("redis");
-		 bean.setValue("test");
+		 bean.setValue("yyy");
 		 redisDemoService.addRedisDemo(bean);
 	     return "demoTest";
 	    }
 	 
+	 //根据key从redis获取对象
 	 @RequestMapping("/redisDemoGet")
 	    public @ResponseBody RedisDemoBean redisDemoGet(){
 		 RedisDemoBean bean=redisDemoService.getRedisDemo("redis");
