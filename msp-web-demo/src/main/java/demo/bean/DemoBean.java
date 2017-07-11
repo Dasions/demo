@@ -1,6 +1,8 @@
 package demo.bean;
 
-public class DemoBean {
+import java.io.Serializable;
+
+public class DemoBean implements Serializable{
 
 	String id;
 	String value;

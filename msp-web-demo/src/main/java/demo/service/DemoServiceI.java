@@ -3,11 +3,10 @@ package demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.github.pagehelper.PageHelper;
-
 import demo.bean.DemoBean;
 import demo.dao.DemoDao;
 
@@ -17,16 +16,22 @@ import demo.dao.DemoDao;
 public class DemoServiceI implements DemoService{
 	@Autowired 
 	DemoDao demoDao;
-	public DemoBean selectDemoBeanById(Integer id) {
+	
+	@Cacheable(value="cacheTest")
+	public DemoBean selectDemoBeanById(String id) {
 		// TODO Auto-generated method stub
+		System.out.println("query from db");
 		return demoDao.selectDemoBeanById(id);
 	}
 	public void insertDemoBean(DemoBean demoBean) {
 		// TODO Auto-generated method stub
 		demoDao.insertDemoBean(demoBean);
 	}
+	
+	@CacheEvict(value="cacheTest",key="#demoBean.getValue()")
 	public void updateDemoBean(DemoBean demoBean) {
 		// TODO Auto-generated method stub
+		System.out.println("update db");
 		demoDao.updateDemoBean(demoBean);
 	}
 	public void delDemoBean(DemoBean demoBean) {

@@ -13,6 +13,7 @@ import com.github.pagehelper.PageHelper;
 import demo.bean.DemoBean;
 import demo.service.DemoService;
 
+
 @Controller
 @RequestMapping("/demo")
 public class demoController {
@@ -34,7 +35,7 @@ public class demoController {
     
     @RequestMapping("/demoDBTest")
     public @ResponseBody  DemoBean demoDBTest(){
-        return demoService.selectDemoBeanById(1);
+        return demoService.selectDemoBeanById("1");
     }
     
     @RequestMapping("/insertDemoBeanTest")

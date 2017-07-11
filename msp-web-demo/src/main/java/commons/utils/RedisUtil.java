@@ -56,6 +56,7 @@ public class RedisUtil<T> {
 	
     /**
      * 针对list的存储的封装
+     * rightPush()会在列表的尾部添加一个元素， 而leftPush()则会在列表的头部添加一个值
      * @param key
      * @param dataList
      */
@@ -73,6 +74,7 @@ public class RedisUtil<T> {
 	
 	/**
 	 * 针对list的获取的封装
+	 * 通过leftPop()或rightPop()方法从列表中弹出一个元素，从列表中移除所弹出的元素
 	 * @param <T>
 	 */
 	public List<T> getListValue(String key){
@@ -83,11 +85,25 @@ public class RedisUtil<T> {
         for(int i = 0 ; i < size ; i ++)
         {
             dataList.add((T) listOperation.leftPop(key));
+            //或者
+            //dataList.add((T) listOperation.rightPop(key));
         }
         
         return dataList;
 	}
 	
+	/**
+	 * 针对list的获取的封装
+	 * 根据指定的key和索引范围， 获取范围内的一个或多个值,不会删除取出的元素
+	 * @param listName
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public List<T> getListValue(String listName,Integer start,Integer end){
+		ListOperations<String,T> listOperation = redisTemplate.opsForList();
+		return listOperation.range(listName, start, end);
+	}
 	/**
 	 * 针对key-value的存储
 	 * @param map
@@ -165,7 +181,7 @@ public class RedisUtil<T> {
 	}
 	
 	/**
-	 * 存储set
+	 * 存储set,针对批量的元素存储
 	 * @param setName
 	 * @param strs
 	 */
@@ -209,6 +225,26 @@ public class RedisUtil<T> {
 	 */
 	public Set<T> getIntersect(String setNameA,String setNameB){
 		return redisTemplate.opsForSet().intersect(setNameA, setNameB);
+	}
+	
+	/**
+	 * 获取两个set的差异元素
+	 * @param setNameA
+	 * @param setNameB
+	 * @return
+	 */
+	public Set<T> getDifference(String setNameA,String setNameB){
+		return redisTemplate.opsForSet().difference(setNameA, setNameB);
+	}
+	
+	/**
+	 * 获取两个set的并集
+	 * @param setNameA
+	 * @param setNameB
+	 * @return
+	 */
+	public Set<T> getUnion(String setNameA,String setNameB){
+		return redisTemplate.opsForSet().union(setNameA, setNameB);
 	}
 	
 	/**

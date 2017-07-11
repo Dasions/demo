@@ -5,11 +5,14 @@
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:tx="http://www.springframework.org/schema/tx"
     xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:cache="http://www.springframework.org/schema/cache"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/cache 
+        http://www.springframework.org/schema/cache/spring-cache.xsd">
 
     <context:component-scan base-package="**.controller"/>
     <context:component-scan base-package="**.service"/>
@@ -18,6 +21,8 @@
     <mvc:default-servlet-handler />
 
     <mvc:annotation-driven />
+    <!-- 启用缓存注解 -->
+   <cache:annotation-driven cache-manager="cacheManager" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
             id="internalResourceViewResolver">
@@ -99,4 +104,17 @@
 
       <!-- 引入redis属性配置文件 -->
       <import resource="classpath:redis-context.xml"/>
+      <!-- 配置redis缓存 -->
+ <!--      <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg index="0" ref="redisTemplate"></constructor-arg>
+     </bean>   -->
+     
+     <!-- 配置ehcache缓存 -->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">  
+        <property name="cacheManager" ref="ehcache"></property>  
+    </bean>  
+ 
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
+        <property name="configLocation" value="classpath:ehcache-setting.xml"></property>  
+    </bean>  
 </beans>

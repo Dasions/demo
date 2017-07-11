@@ -6,7 +6,7 @@
         <id column="id" property="id" jdbcType="INTEGER" />  
         <result column="name" property="value" jdbcType="CHAR" />  
     </resultMap>  
-    <select id="selectDemoBeanById" parameterType="int" resultMap="BaseResultMap">  
+    <select id="selectDemoBeanById" parameterType="String" resultMap="BaseResultMap">  
         SELECT * FROM t_demo WHERE id = #{id}  
     </select>  
     
@@ -23,7 +23,7 @@
         update t_demo set name=#{value} where id=#{id}
     </update>
     
-    <delete id="delDemoBean" parameterType="int">
+    <delete id="delDemoBean" parameterType="String">
         delete from t_demo where id=#{id}
     </delete>
     

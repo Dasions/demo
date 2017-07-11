@@ -5,7 +5,7 @@ import java.util.List;
 import demo.bean.DemoBean;
 
 public interface DemoDao {
-	 public DemoBean selectDemoBeanById(Integer id); 
+	 public DemoBean selectDemoBeanById(String id); 
 	 public void insertDemoBean(DemoBean demoBean);
 	 public void updateDemoBean(DemoBean demoBean);
 	 public void delDemoBean(DemoBean demoBean);
