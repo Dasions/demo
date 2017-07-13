@@ -16,7 +16,7 @@ import demo.service.DemoService;
 
 @Controller
 @RequestMapping("/demo")
-public class demoController {
+public class DemoController {
 	@Autowired 
 	DemoService demoService;
 	

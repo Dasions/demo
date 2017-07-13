@@ -19,4 +19,12 @@ public class DemoBean implements Serializable{
 		this.value = value;
 	}
 
+	public DemoBean(){
+		
+	}
+	
+    public DemoBean(String id,String value){
+    	this.id = id;
+    	this.value = value;
+	}
 }
