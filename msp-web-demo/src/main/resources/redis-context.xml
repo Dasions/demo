@@ -51,14 +51,14 @@
     </bean>
 
 	<!-- Serializer -->
-	<!-- 如果不配置Serializer，那么存储的时候只能使用String，如果存储其他类型的对象，将会提示错误
+	<!-- 如果不配置Serializer，默认JdkSerializationRedisSerializer
 	<bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
-    <bean id="valueSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />-->
+    <bean id="valueSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />-->
    
     <!--redisTemplate-->
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="jedisConnectionFactory"/>
-    	<!-- <property name="keySerializer" ref="keySerializer"/>
+    	<!--<property name="keySerializer" ref="keySerializer"/>
     	<property name="valueSerializer" ref="valueSerializer"/>-->
     </bean>
 

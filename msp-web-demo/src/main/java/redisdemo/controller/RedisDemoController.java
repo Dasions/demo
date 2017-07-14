@@ -21,8 +21,8 @@ public class RedisDemoController {
 	 @RequestMapping("/redisDemoAdd")
 	    public String redisDemoAdd(){
 		 RedisDemoBean bean=new RedisDemoBean();
-		 bean.setId("notransaction");
-		 bean.setValue("yyy");
+		 bean.setId("test-key");
+		 bean.setValue("test value");
 		 redisDemoService.addRedisDemo(bean);
 	     return "demoTest";
 	    }
@@ -34,7 +34,7 @@ public class RedisDemoController {
 	  */
 	 @RequestMapping("/redisDemoGet")
 	    public @ResponseBody RedisDemoBean redisDemoGet(){
-		 RedisDemoBean bean=redisDemoService.getRedisDemo("notransaction");
+		 RedisDemoBean bean=redisDemoService.getRedisDemo("test-key");
 	     return bean;
 	    }
 
@@ -50,6 +50,6 @@ public class RedisDemoController {
 	 
 	 @RequestMapping("/getRedisTransactionsDemo")
 	 public String getRedisTransactionsDemo(){
-		 return redisDemoService.getRedisTransactionsDemo("w");
+		 return redisDemoService.getRedisTransactionsDemo("test-1");
 	 }
 }

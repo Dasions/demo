@@ -27,7 +27,6 @@ public class RedisDemoServiceI<T> implements RedisDemoService {
 	public void addRedisDemo(final RedisDemoBean bean) {
 		// 序列化java对象==>二进制，存放到redis
 		redisUtl.setValue(bean.getId(), SerializeUtil.serialize(bean));
-		throw new RuntimeException("no transaction");
 	}
 
 	/**
@@ -50,9 +49,9 @@ public class RedisDemoServiceI<T> implements RedisDemoService {
 
 			public <K, V> List<Object> execute(RedisOperations<K, V> operations) throws DataAccessException {
 				operations.multi();
-				redisTemplate.opsForValue().set("q",  "2");
-				redisTemplate.opsForValue().set("w",  "3");
-				redisTemplate.opsForValue().set("e",  "4");
+				redisTemplate.opsForValue().set("test-1",  "2");
+				redisTemplate.opsForValue().set("test-2",  "3");
+				redisTemplate.opsForValue().set("test-3",  "4");
 				return operations.exec();
 			}
 		});
