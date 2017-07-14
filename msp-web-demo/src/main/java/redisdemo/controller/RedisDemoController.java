@@ -49,7 +49,7 @@ public class RedisDemoController {
 	    }
 	 
 	 @RequestMapping("/getRedisTransactionsDemo")
-	 public void getRedisTransactionsDemo(){
-		 System.out.println(redisDemoService.getRedisTransactionsDemo("w"));
+	 public String getRedisTransactionsDemo(){
+		 return redisDemoService.getRedisTransactionsDemo("w");
 	 }
 }
