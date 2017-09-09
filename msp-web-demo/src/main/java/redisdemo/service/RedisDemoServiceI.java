@@ -58,7 +58,7 @@ public class RedisDemoServiceI<T> implements RedisDemoService {
 	}
 	
 	/**
-	 * redis获取字符串类型数据
+	 * redis获取字符串类型数据 
 	 */
 	public String getRedisTransactionsDemo(String key){
 		return (String) redisUtl.getValue(key);
